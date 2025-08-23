@@ -1,7 +1,3 @@
-Got it Spidey 👍
-You want the **folder structure block also formatted as code** so it stretches full width properly.
-Here’s the **fixed README.md** version with the `tree` section in a proper code block ✅
-
 ````markdown
 # 📖 Online Diary
 
@@ -127,14 +123,8 @@ Contributions are welcome! Feel free to:
 ## 📬 Contact
 
 * 👤 Emmanuel
-* 📧 Email: \[your email here]
-* 🔗 GitHub: [https://github.com/your-username](https://github.com/your-username)
+* 📧 Email: emman30102004@gmail.com
+* 🔗 GitHub: https://github.com/Emmanuel301004/
 
 ```
 
----
-
-Spidey, this way the **tree is aligned properly as code** and will show clean in GitHub.  
-
-👉 Do you also want me to give you a **ready-made LICENSE.md (MIT)** file so you can just drop it in your repo?
-```
