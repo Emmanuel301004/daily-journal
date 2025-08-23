@@ -167,11 +167,11 @@ function MainPage({ user, handleLogout }) {
       setCurrentTitle("");
       setIsWriting(false);
       
-      alert("Entry saved successfully! 📝");
+      // alert("Entry saved successfully! 📝");
       
     } catch (error) {
       // console.error("Save error:", error);
-      alert("Failed to save entry. Please try again.");
+      // alert("Failed to save entry. Please try again.");
       setError("Save failed: " + error.message);
     } finally {
       setSaving(false);
@@ -241,7 +241,7 @@ function MainPage({ user, handleLogout }) {
         <div className="header-left">
           <div className="diary-icon">📖</div>
           <div className="user-info">
-            <h1>My Personal Diary</h1>
+            <h1>Your Personal Diary</h1>
             <p className="greeting">{getGreeting()}</p>
           </div>
         </div>

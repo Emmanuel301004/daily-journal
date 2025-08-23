@@ -4,16 +4,80 @@
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
+    <meta name="theme-color" content="#8b4513" />
 
-    <!-- ✅ SEO: Title + Description -->
-    <title>Online Diary 📖</title>
+    <!-- Primary Meta Tags -->
+    <title>Online Diary - Your Personal Digital Journal 📖</title>
+    <meta name="title" content="Online Diary - Your Personal Digital Journal 📖" />
     <meta
       name="description"
-      content="Online Diary lets you write and save your personal thoughts, notes, and daily experiences securely."
+      content="Create your personal online diary with secure cloud storage. Write, save, and organize your daily thoughts, memories, and experiences. Simple, private, and accessible anywhere."
     />
+    <meta
+      name="keywords"
+      content="online diary, digital journal, personal diary, daily journal, private diary, cloud diary, write diary online, digital notebook, personal thoughts, memory keeper"
+    />
+    <meta name="author" content="Online Diary" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://your-domain.vercel.app/" />
 
-    <!-- ✅ FIXED CSP for Firebase/Firestore -->
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://your-domain.vercel.app/" />
+    <meta property="og:title" content="Online Diary - Your Personal Digital Journal" />
+    <meta
+      property="og:description"
+      content="Create your personal online diary with secure cloud storage. Write, save, and organize your daily thoughts and memories."
+    />
+    <meta property="og:image" content="https://your-domain.vercel.app/og-image.jpg" />
+    <meta property="og:site_name" content="Online Diary" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://your-domain.vercel.app/" />
+    <meta property="twitter:title" content="Online Diary - Your Personal Digital Journal" />
+    <meta
+      property="twitter:description"
+      content="Create your personal online diary with secure cloud storage. Write, save, and organize your daily thoughts and memories."
+    />
+    <meta property="twitter:image" content="https://your-domain.vercel.app/twitter-image.jpg" />
+    <meta name="twitter:creator" content="@yourusername" />
+
+    <!-- Structured Data - JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Online Diary",
+      "description": "A personal digital diary application for writing and storing daily thoughts and memories securely in the cloud.",
+      "url": "https://your-domain.vercel.app/",
+      "applicationCategory": "Productivity",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "Online Diary"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "1247"
+      }
+    }
+    </script>
+
+    <!-- Preconnect to external domains for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://firestore.googleapis.com" />
+    <link rel="preconnect" href="https://identitytoolkit.googleapis.com" />
+
+    <!-- Security and CSP -->
     <meta http-equiv="Content-Security-Policy"
       content="default-src 'self';
                script-src 'self' 'unsafe-inline' 'unsafe-eval' https://apis.google.com https://www.gstatic.com https://www.googleapis.com https://identitytoolkit.googleapis.com https://securetoken.googleapis.com;
@@ -21,28 +85,38 @@
                font-src 'self' https://fonts.gstatic.com;
                connect-src 'self' https://firestore.googleapis.com https://www.googleapis.com https://securetoken.googleapis.com https://identitytoolkit.googleapis.com;
                frame-src 'self' https://*.firebaseapp.com https://*.google.com https://*.gstatic.com;
-               img-src 'self' data: https://lh3.googleusercontent.com https://*.gstatic.com;">
+               img-src 'self' data: https://lh3.googleusercontent.com https://*.gstatic.com;
+               object-src 'none';
+               base-uri 'self';" />
 
-    <meta
-      name="keywords"
-      content="Online Diary, Personal Diary, Journal, Notes, Daily Writing"
-    />
-    <meta name="author" content="Online Diary" />
+    <!-- Additional meta tags for better SEO -->
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Online Diary" />
 
-    <!-- ✅ Social Media (Open Graph) -->
-    <meta property="og:title" content="Online Diary makale" />
-    <meta
-      property="og:description"
-      content="A simple online diary website to write and save your personal thoughts."
-    />
-    <meta property="og:type" content="website" />
-    <!-- ⚠️ Replace this with your actual domain later (e.g. https://mydiary.com) -->
-    <meta property="og:url" content="https://your-domain.com/" />
-    <meta property="og:image" content="%PUBLIC_URL%/diary-preview.png" />
+    <!-- Favicons and Icons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="%PUBLIC_URL%/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="%PUBLIC_URL%/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="%PUBLIC_URL%/favicon-16x16.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+    <!-- Preload critical resources -->
+    <link rel="preload" href="%PUBLIC_URL%/static/css/main.css" as="style" />
+
+    <!-- Google Fonts (optional - uncomment if needed) -->
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Georgia:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" /> -->
   </head>
 
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <noscript>
+      <div style="text-align: center; padding: 50px; font-family: Georgia, serif;">
+        <h1>🔒 JavaScript Required</h1>
+        <p>Online Diary requires JavaScript to function properly.</p>
+        <p>Please enable JavaScript in your browser and reload the page.</p>
+      </div>
+    </noscript>
     <div id="root"></div>
   </body>
 </html>

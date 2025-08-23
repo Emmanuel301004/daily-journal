@@ -5,12 +5,15 @@
   padding: 0;
   box-sizing: border-box;
 }
+body{
+  margin: 0;
+}
 
 /* Main Auth Container - Desktop First */
 .auth-container {
   width: 100%;
   
-  margin: 0 auto;
+  margin: 0;
   padding: 60px 50px;
   background: rgba(255, 255, 255, 0.95);
   border-radius: 25px;
@@ -370,7 +373,7 @@ form {
 @media (max-width: 480px) {
   .auth-container {
     max-width: 100%;
-    margin: 0 15px;
+    margin: 0px;
     padding: 35px 25px;
     border-radius: 18px;
   }
