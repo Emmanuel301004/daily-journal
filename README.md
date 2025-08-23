@@ -1,6 +1,8 @@
-Got it Spidey 👍 Since you already added the **MIT License**, here’s a professional and complete **README.md** template for your **Online Diary 📖 project**. You can just copy-paste it, and I’ll insert your details (owner name = **Emmanuel**).
+Got it Spidey 👍
+You want the **folder structure block also formatted as code** so it stretches full width properly.
+Here’s the **fixed README.md** version with the `tree` section in a proper code block ✅
 
-```markdown
+````markdown
 # 📖 Online Diary
 
 An **online diary web application** that allows users to securely write, save, and manage their personal thoughts, notes, and daily experiences.  
@@ -30,20 +32,18 @@ Built using **React, Firebase Authentication, and Firestore** for seamless and s
 
 ## 📂 Project Structure
 
-```
-
+```bash
 online-diary/
-├── public/              # Static assets
+├── public/               # Static assets
 ├── src/
-│   ├── components/      # Reusable UI components
-│   ├── pages/           # App pages (Login, Register, Diary, etc.)
-│   ├── firebase.js      # Firebase config & setup
-│   ├── App.js           # Main app entry
-│   └── index.js         # React root
+│   ├── components/       # Reusable UI components
+│   ├── pages/            # App pages (Login, Register, Diary, etc.)
+│   ├── firebase.js       # Firebase config & setup
+│   ├── App.js            # Main app entry
+│   └── index.js          # React root
 ├── package.json
 ├── README.md
 └── LICENSE
-
 ````
 
 ---
@@ -51,10 +51,11 @@ online-diary/
 ## ⚙️ Installation & Setup
 
 1. **Clone the repo**
+
    ```bash
    git clone https://github.com/<your-username>/online-diary.git
    cd online-diary
-````
+   ```
 
 2. **Install dependencies**
 
@@ -66,8 +67,8 @@ online-diary/
 
    * Go to [Firebase Console](https://console.firebase.google.com/)
    * Create a new project
-   * Enable **Authentication (Google + Email/Password)**
-   * Create a **Firestore Database**
+   * Enable Authentication (Google + Email/Password)
+   * Create a Firestore Database
    * Add your config to `src/firebase.js`:
 
      ```js
@@ -91,25 +92,25 @@ online-diary/
 
 ## 📖 Usage
 
-* **Sign Up / Log In** with Google or Email
-* **Write your diary entries** in a secure editor
-* **View, update, or delete** your past entries anytime
+1. Sign Up / Log In with Google or Email
+2. Write your diary entries in a secure editor
+3. View, update, or delete your past entries anytime
 
 ---
 
 ## 🔒 Security
 
-* Firestore security rules ensure that **users can only access their own diary entries**.
-* Authentication is handled with **Firebase Auth**.
+* Firestore security rules ensure that users can only access their own diary entries.
+* Authentication is handled with Firebase Auth.
 * CSP headers included in `index.html` for added protection.
 
 ---
 
 ## 📜 License
 
-This project is licensed under the **MIT License** – see the [LICENSE](./LICENSE) file for details.
+This project is licensed under the **MIT License** – see the LICENSE file for details.
 
-**Owner:** Emmanuel (2025)
+👤 **Owner:** Emmanuel (2025)
 
 ---
 
@@ -125,17 +126,15 @@ Contributions are welcome! Feel free to:
 
 ## 📬 Contact
 
-👤 **Emmanuel**
-📧 Email: *\[your email here]*
-🔗 GitHub: [https://github.com/your-username](https://github.com/your-username)
-
----
+* 👤 Emmanuel
+* 📧 Email: \[your email here]
+* 🔗 GitHub: [https://github.com/your-username](https://github.com/your-username)
 
 ```
 
-👉 You just need to **replace**:
-- `your-username` → your actual GitHub username  
-- `your email here` → your email (if you want to share)  
+---
 
-Do you want me to also make a **short version** of README (like a one-page GitHub style) in case you don’t want it this detailed?
+Spidey, this way the **tree is aligned properly as code** and will show clean in GitHub.  
+
+👉 Do you also want me to give you a **ready-made LICENSE.md (MIT)** file so you can just drop it in your repo?
 ```
