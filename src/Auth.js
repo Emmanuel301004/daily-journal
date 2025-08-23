@@ -1,4 +1,4 @@
-// Auth.js - Updated with Better Error Handling
+// Auth.js - Updated with Better Error Handling and Responsive Design
 import React, { useState } from "react";
 import {
   signInWithEmailAndPassword,
@@ -40,25 +40,34 @@ function Auth() {
       // Handle specific Firebase auth errors
       switch (error.code) {
         case 'auth/user-not-found':
-          setError("No account found with this email");
+          setError("No account found with this email address");
           break;
         case 'auth/wrong-password':
-          setError("Incorrect password");
+          setError("Incorrect password. Please try again.");
           break;
         case 'auth/email-already-in-use':
           setError("An account with this email already exists");
           break;
         case 'auth/weak-password':
-          setError("Password should be at least 6 characters");
+          setError("Password should be at least 6 characters long");
           break;
         case 'auth/invalid-email':
           setError("Please enter a valid email address");
+          break;
+        case 'auth/invalid-credential':
+          setError("Invalid email or password. Please check and try again.");
+          break;
+        case 'auth/too-many-requests':
+          setError("Too many failed attempts. Please try again later.");
+          break;
+        case 'auth/network-request-failed':
+          setError("Network error. Please check your connection.");
           break;
         case 'auth/internal-error':
           setError("An internal error occurred. Please try again later.");
           break;
         default:
-          setError("An error occurred. Please try again.");
+          setError("An unexpected error occurred. Please try again.");
       }
     } finally {
       setLoading(false);
@@ -92,10 +101,16 @@ function Auth() {
       
       switch (error.code) {
         case 'auth/popup-closed-by-user':
-          setError("Login cancelled");
+          setError("Login was cancelled. Please try again.");
           break;
         case 'auth/popup-blocked':
-          setError("Popup was blocked. Please allow popups for this site");
+          setError("Popup was blocked. Please allow popups for this site.");
+          break;
+        case 'auth/cancelled-popup-request':
+          setError("Only one popup request is allowed at a time.");
+          break;
+        case 'auth/account-exists-with-different-credential':
+          setError("An account already exists with the same email but different sign-in credentials.");
           break;
         case 'auth/internal-error':
           setError("An internal error occurred. Please try again later.");
@@ -111,38 +126,38 @@ function Auth() {
     }
   };
 
+  const handleSwitchMode = () => {
+    setIsLogin(!isLogin);
+    setError("");
+    setEmail("");
+    setPassword("");
+  };
+
   return (
-    <div className="auth-container">
+    <div className={`auth-container ${loading ? 'loading' : ''}`}>
       <div className="welcome-header">
         <h2>{isLogin ? "Welcome Back" : "Create Account"}</h2>
         <p className="auth-subtitle">
-          {isLogin ? "Sign in to your account" : "Start your journaling journey"}
+          {isLogin ? "Sign in to your personal diary" : "Begin your journaling journey"}
         </p>
       </div>
 
       {error && (
-        <div style={{
-          background: '#fee',
-          border: '1px solid #fcc',
-          color: '#c66',
-          padding: '12px',
-          borderRadius: '6px',
-          marginBottom: '20px',
-          fontSize: '14px'
-        }}>
+        <div className="auth-error">
           {error}
         </div>
       )}
 
       <form onSubmit={handleSubmit}>
         <div className="input-group">
-          <label className="input-label">Email</label>
+          <label className="input-label">Email Address</label>
           <input
             type="email"
             placeholder="Enter your email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             disabled={loading}
+            autoComplete="email"
           />
         </div>
         
@@ -154,6 +169,7 @@ function Auth() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             disabled={loading}
+            autoComplete={isLogin ? "current-password" : "new-password"}
           />
         </div>
         
@@ -162,7 +178,7 @@ function Auth() {
           className="submit-btn"
           disabled={loading}
         >
-          {loading ? "Loading..." : (isLogin ? "Sign In" : "Create Account")}
+          {loading ? "Please wait..." : (isLogin ? "Sign In" : "Create Account")}
         </button>
       </form>
 
@@ -177,7 +193,7 @@ function Auth() {
         type="button"
       >
         <div className="google-icon"></div>
-        {loading ? "Loading..." : "Continue with Google"}
+        {loading ? "Connecting..." : "Continue with Google"}
       </button>
 
       <div className="auth-switch">
@@ -185,10 +201,7 @@ function Auth() {
           {isLogin ? "Don't have an account?" : "Already have an account?"}
           <button 
             type="button"
-            onClick={() => {
-              setIsLogin(!isLogin);
-              setError("");
-            }}
+            onClick={handleSwitchMode}
             disabled={loading}
           >
             {isLogin ? "Sign up" : "Sign in"}

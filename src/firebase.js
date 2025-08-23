@@ -1,6 +1,7 @@
-// firebase.js - Updated Configuration
+// firebase.js - Updated Configuration with Firestore
 import { initializeApp } from "firebase/app";
 import { getAuth, connectAuthEmulator } from "firebase/auth";
+import { getFirestore, connectFirestoreEmulator } from "firebase/firestore";
 import { getAnalytics } from "firebase/analytics";
 
 // Your web app's Firebase configuration
@@ -20,6 +21,9 @@ const app = initializeApp(firebaseConfig);
 // Initialize Auth
 const auth = getAuth(app);
 
+// Initialize Firestore
+const db = getFirestore(app);
+
 // Initialize Analytics only if not in development
 let analytics = null;
 if (typeof window !== 'undefined' && window.location.hostname !== 'localhost') {
@@ -30,6 +34,6 @@ if (typeof window !== 'undefined' && window.location.hostname !== 'localhost') {
   }
 }
 
-// Export auth instance
-export { auth };
+// Export auth and db instances
+export { auth, db };
 export default app;

@@ -1,0 +1,367 @@
+/* src/App.css - Responsive Diary-themed App styles */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  line-height: 1.6;
+}
+
+.app {
+  min-height: 100vh;
+  font-family: 'Georgia', 'Times New Roman', serif;
+}
+
+/* Auth Container - Desktop First, then Mobile */
+.auth-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 40px;
+}
+
+/* Desktop welcome section */
+.welcome-section {
+  text-align: center;
+  margin-bottom: 50px;
+  max-width: 600px;
+  width: 100%;
+}
+
+/* Desktop app title */
+.app-title {
+  font-size: 4.5rem;
+  font-weight: 400;
+  color: #8b4513;
+  margin: 0 0 30px 0;
+  font-family: 'Georgia', serif;
+  text-shadow: 3px 3px 6px rgba(139, 69, 19, 0.2);
+  letter-spacing: -2px;
+  line-height: 1.1;
+}
+
+/* Desktop app subtitle */
+.app-subtitle {
+  font-size: 1.5rem;
+  color: #a0522d;
+  margin: 0;
+  font-style: italic;
+  line-height: 1.6;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* Loading States - Desktop */
+.app-loading {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+.loading-container {
+  text-align: center;
+  color: #8b4513;
+  max-width: 500px;
+  padding: 60px 40px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+}
+
+.loading-container h2 {
+  font-size: 3rem;
+  font-weight: 400;
+  margin: 30px 0 15px 0;
+  font-family: 'Georgia', serif;
+}
+
+.loading-container p {
+  font-size: 1.3rem;
+  font-style: italic;
+  color: #a0522d;
+  margin: 0;
+}
+
+.loading-spinner {
+  width: 60px;
+  height: 60px;
+  border: 5px solid rgba(139, 69, 19, 0.2);
+  border-top: 5px solid #8b4513;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 30px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Error States - Desktop */
+.app-error {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+.error-container {
+  text-align: center;
+  color: #8b4513;
+  max-width: 500px;
+  width: 100%;
+  padding: 50px 40px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 25px;
+  box-shadow: 0 15px 40px rgba(139, 69, 19, 0.2);
+  border: 3px solid #d2b48c;
+  backdrop-filter: blur(10px);
+}
+
+.error-container h2 {
+  font-size: 2.5rem;
+  font-weight: 400;
+  margin: 0 0 20px 0;
+  font-family: 'Georgia', serif;
+}
+
+.error-container p {
+  font-size: 1.2rem;
+  color: #a0522d;
+  margin: 0 0 30px 0;
+  line-height: 1.6;
+}
+
+.error-container button {
+  background: linear-gradient(145deg, #8b4513, #a0522d);
+  border: none;
+  padding: 15px 30px;
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  font-family: 'Georgia', serif;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 20px rgba(139, 69, 19, 0.3);
+  min-width: 150px;
+}
+
+.error-container button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(139, 69, 19, 0.4);
+  background: linear-gradient(145deg, #a0522d, #8b4513);
+}
+
+.error-container button:active {
+  transform: translateY(-1px);
+}
+
+/* Tablet adjustments (768px to 1024px) */
+@media (max-width: 1024px) {
+  .app-title {
+    font-size: 3.5rem;
+  }
+  
+  .app-subtitle {
+    font-size: 1.3rem;
+  }
+  
+  .auth-container {
+    padding: 40px 30px;
+  }
+  
+  .loading-container,
+  .error-container {
+    padding: 40px 30px;
+  }
+  
+  .loading-container h2,
+  .error-container h2 {
+    font-size: 2.2rem;
+  }
+}
+
+/* Mobile adjustments (max-width: 768px) */
+@media (max-width: 768px) {
+  .app-title {
+    font-size: 2.8rem;
+    letter-spacing: -1px;
+  }
+  
+  .app-subtitle {
+    font-size: 1.2rem;
+  }
+  
+  .auth-container {
+    padding: 30px 20px;
+  }
+  
+  .welcome-section {
+    margin-bottom: 35px;
+    max-width: 90%;
+  }
+  
+  .loading-container {
+    padding: 40px 25px;
+    margin: 0 20px;
+  }
+  
+  .error-container {
+    padding: 40px 25px;
+    margin: 0 20px;
+  }
+  
+  .loading-container h2,
+  .error-container h2 {
+    font-size: 2rem;
+  }
+  
+  .loading-container p,
+  .error-container p {
+    font-size: 1.1rem;
+  }
+  
+  .loading-spinner {
+    width: 50px;
+    height: 50px;
+    border-width: 4px;
+  }
+}
+
+/* Small mobile adjustments (max-width: 480px) */
+@media (max-width: 480px) {
+  .app-title {
+    font-size: 2.2rem;
+    letter-spacing: -0.5px;
+  }
+  
+  .app-subtitle {
+    font-size: 1rem;
+  }
+  
+  .auth-container {
+    padding: 20px 15px;
+  }
+  
+  .welcome-section {
+    margin-bottom: 25px;
+  }
+  
+  .loading-container,
+  .error-container {
+    padding: 30px 20px;
+    margin: 0 15px;
+    border-radius: 15px;
+  }
+  
+  .loading-container h2,
+  .error-container h2 {
+    font-size: 1.8rem;
+  }
+  
+  .loading-container p,
+  .error-container p {
+    font-size: 1rem;
+  }
+  
+  .error-container button {
+    padding: 12px 24px;
+    font-size: 16px;
+  }
+  
+  .loading-spinner {
+    width: 40px;
+    height: 40px;
+    border-width: 3px;
+  }
+}
+
+/* Extra small devices (max-width: 320px) */
+@media (max-width: 320px) {
+  .app-title {
+    font-size: 1.8rem;
+  }
+  
+  .app-subtitle {
+    font-size: 0.9rem;
+  }
+  
+  .loading-container,
+  .error-container {
+    padding: 25px 15px;
+    margin: 0 10px;
+  }
+  
+  .loading-container h2,
+  .error-container h2 {
+    font-size: 1.5rem;
+  }
+  
+  .error-container button {
+    padding: 10px 20px;
+    font-size: 14px;
+    min-width: 120px;
+  }
+}
+
+/* Landscape orientation adjustments */
+@media (max-height: 600px) and (orientation: landscape) {
+  .auth-container,
+  .app-loading,
+  .app-error {
+    padding: 20px;
+  }
+  
+  .app-title {
+    font-size: 2rem;
+    margin-bottom: 15px;
+  }
+  
+  .app-subtitle {
+    font-size: 1rem;
+  }
+  
+  .welcome-section {
+    margin-bottom: 20px;
+  }
+  
+  .loading-container,
+  .error-container {
+    padding: 25px 30px;
+  }
+  
+  .loading-container h2,
+  .error-container h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .loading-spinner {
+    width: 35px;
+    height: 35px;
+    margin-bottom: 15px;
+  }
+}
+
+/* High DPI/Retina display optimizations */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .app-title,
+  .loading-container h2,
+  .error-container h2 {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
