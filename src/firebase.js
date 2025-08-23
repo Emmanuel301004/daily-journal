@@ -1,7 +1,7 @@
-// firebase.js - Secure Configuration for Production
+// firebase.js - Secure Configuration for Production (Fixed unused imports)
 import { initializeApp } from "firebase/app";
-import { getAuth, connectAuthEmulator } from "firebase/auth";
-import { getFirestore, connectFirestoreEmulator } from "firebase/firestore";
+import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
 import { getAnalytics } from "firebase/analytics";
 
 // Firebase configuration using environment variables
@@ -52,12 +52,14 @@ if (typeof window !== 'undefined' &&
   }
 }
 
-// Development emulators (optional)
-if (process.env.NODE_ENV === 'development' && typeof window !== 'undefined') {
-  // Uncomment these lines if you want to use Firebase emulators in development
-  // connectAuthEmulator(auth, 'http://localhost:9099');
-  // connectFirestoreEmulator(db, 'localhost', 8080);
-}
+// Development emulators (removed unused imports)
+// Note: If you need emulators in development, uncomment these lines:
+// import { connectAuthEmulator } from "firebase/auth";
+// import { connectFirestoreEmulator } from "firebase/firestore";
+// if (process.env.NODE_ENV === 'development' && typeof window !== 'undefined') {
+//   connectAuthEmulator(auth, 'http://localhost:9099');
+//   connectFirestoreEmulator(db, 'localhost', 8080);
+// }
 
 export { auth, db, analytics };
 export default app;

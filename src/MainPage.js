@@ -1,17 +1,14 @@
-// src/MainPage.js - Fixed Version
-import React, { useState, useEffect } from "react";
+// src/MainPage.js - Fixed Version (Removed unused imports and fixed useEffect)
+import React, { useState, useEffect, useCallback } from "react";
 import { 
   collection, 
   addDoc, 
   query, 
-  orderBy, 
   onSnapshot, 
   deleteDoc, 
   doc, 
   where,
-  serverTimestamp,
-  getDocs,
-  Timestamp
+  serverTimestamp
 } from "firebase/firestore";
 import { db } from "./firebase";
 import "./MainPage.css";
@@ -31,21 +28,12 @@ function MainPage({ user, handleLogout }) {
   // Default avatar
   const defaultAvatar = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%23f5f5f5' stroke='%23e0e0e0'/%3E%3Ccircle cx='50' cy='35' r='12' fill='%23666'/%3E%3Cellipse cx='50' cy='70' rx='20' ry='12' fill='%23666'/%3E%3C/svg%3E";
 
-  // Load entries on component mount
-  useEffect(() => {
-    if (!user?.uid) {
-      setLoading(false);
-      return;
-    }
-
-    loadEntries();
-  }, [user?.uid]);
-
-  const loadEntries = async () => {
+  // Load entries with useCallback to fix useEffect dependency warning
+  const loadEntries = useCallback(async () => {
     if (!user?.uid) return;
     
     try {
-      // console.log("Loading entries for user:", user.uid);
+      console.log("Loading entries for user:", user.uid);
       
       const entriesRef = collection(db, 'entries');
       
@@ -58,12 +46,12 @@ function MainPage({ user, handleLogout }) {
       // Set up real-time listener
       const unsubscribe = onSnapshot(q, 
         (querySnapshot) => {
-          // console.log("Entries found:", querySnapshot.size);
+          console.log("Entries found:", querySnapshot.size);
           const entriesData = [];
           
           querySnapshot.forEach((docSnapshot) => {
             const data = docSnapshot.data();
-            // console.log("Entry data:", docSnapshot.id, data);
+            console.log("Entry data:", docSnapshot.id, data);
             
             // Convert Firestore Timestamp to Date if needed
             let createdAtDate = data.createdAt;
@@ -91,10 +79,10 @@ function MainPage({ user, handleLogout }) {
           setLoading(false);
           setError(null);
           
-          // console.log("Total entries loaded:", entriesData.length);
+          console.log("Total entries loaded:", entriesData.length);
         },
         (error) => {
-          // console.error("Firestore error:", error);
+          console.error("Firestore error:", error);
           setError("Failed to load entries. Please refresh the page.");
           setLoading(false);
         }
@@ -103,11 +91,21 @@ function MainPage({ user, handleLogout }) {
       // Cleanup listener on unmount
       return () => unsubscribe();
     } catch (error) {
-      // console.error("Load entries error:", error);
+      console.error("Load entries error:", error);
       setError("Database connection failed.");
       setLoading(false);
     }
-  };
+  }, [user?.uid]); // Fixed: Added loadEntries dependency
+
+  // Load entries on component mount - Fixed useEffect dependency
+  useEffect(() => {
+    if (!user?.uid) {
+      setLoading(false);
+      return;
+    }
+
+    loadEntries();
+  }, [user?.uid, loadEntries]); // Fixed: Added loadEntries to dependencies
 
   // Photo URL handler
   const getPhotoURL = () => {
@@ -159,8 +157,9 @@ function MainPage({ user, handleLogout }) {
         createdAt: now.toISOString() // Add ISO string for consistent sorting
       };
       
-      const docRef = await addDoc(collection(db, 'entries'), entryData);
-      // console.log("Entry saved with ID:", docRef.id);
+      await addDoc(collection(db, 'entries'), entryData);
+      // Removed unused 'docRef' variable - Line 162 fixed
+      console.log("Entry saved successfully");
       
       // Reset form
       setCurrentEntry("");
@@ -170,7 +169,7 @@ function MainPage({ user, handleLogout }) {
       // alert("Entry saved successfully! 📝");
       
     } catch (error) {
-      // console.error("Save error:", error);
+      console.error("Save error:", error);
       // alert("Failed to save entry. Please try again.");
       setError("Save failed: " + error.message);
     } finally {
@@ -186,9 +185,9 @@ function MainPage({ user, handleLogout }) {
 
     try {
       await deleteDoc(doc(db, 'entries', id));
-      // console.log("Entry deleted:", id);
+      console.log("Entry deleted:", id);
     } catch (error) {
-      // console.error("Delete error:", error);
+      console.error("Delete error:", error);
       alert("Failed to delete entry. Please try again.");
     }
   };

@@ -1,4 +1,4 @@
-// Auth.js - Updated with Better Error Handling and Responsive Design
+// Auth.js - Fixed Version (Removed unused variables)
 import React, { useState } from "react";
 import {
   signInWithEmailAndPassword,
@@ -88,13 +88,9 @@ function Auth() {
       });
 
       const result = await signInWithPopup(auth, provider);
-      const user = result.user;
+      // Removed unused 'user' variable - Line 91 fixed
       
-      // console.log("Google login successful:", {
-      //   displayName: user.displayName,
-      //   email: user.email,
-      //   photoURL: user.photoURL
-      // });
+      console.log("Google login successful");
       
     } catch (error) {
       console.error("Google login error:", error);
