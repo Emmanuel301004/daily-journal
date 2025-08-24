@@ -76,7 +76,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://firestore.googleapis.com" />
     <link rel="preconnect" href="https://identitytoolkit.googleapis.com" />
-
+    <meta name="google-site-verification" content="NDglCpNgWPSj-JUm5oaJOSm20ppt1cul64oFQJAyZAE" />
     <!-- Security and CSP -->
     <meta http-equiv="Content-Security-Policy"
       content="default-src 'self';
@@ -88,6 +88,12 @@
                img-src 'self' data: https://lh3.googleusercontent.com https://*.gstatic.com;
                object-src 'none';
                base-uri 'self';" />
+    <meta http-equiv="Content-Security-Policy"
+    content="
+      default-src 'self';
+      connect-src 'self' https://firestore.googleapis.com https://www.googleapis.com https://securetoken.googleapis.com https://identitytoolkit.googleapis.com https://firebase.googleapis.com https://firebaseinstallations.googleapis.com;
+      script-src 'self' 'unsafe-inline' 'unsafe-eval' https://apis.google.com https://www.gstatic.com https://www.googleapis.com https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://www.googletagmanager.com;
+    ">
 
     <!-- Additional meta tags for better SEO -->
     <meta name="format-detection" content="telephone=no" />
